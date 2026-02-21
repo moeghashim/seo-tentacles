@@ -1,0 +1,21 @@
+export const backlinkOpportunitySchema = {
+  title: 'BacklinkOpportunity',
+  type: 'object',
+  required: ['website', 'name', 'type', 'status'],
+  properties: {
+    website: { type: 'string' },
+    name: { type: 'string' },
+    dr: { type: ['number', 'null'] },
+    ahrefsTraffic: { type: ['number', 'null'] },
+    type: { type: 'string' },
+    category: { type: 'string' },
+    nicheIndustry: { type: 'string' },
+    scopeLocalGlobal: { type: 'string' },
+    linkType: { type: 'array', items: { type: 'string' } },
+    paidFree: { type: 'string' },
+    instructions: { type: 'string' },
+    verificationMode: { type: 'string' },
+    owner: { type: 'string' },
+    status: { type: 'string' },
+  },
+};

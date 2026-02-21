@@ -1,0 +1,26 @@
+{
+  "name": "seo-tentacles",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "seo": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm run typecheck",
+    "docs:check": "node scripts/docs-check.js",
+    "verify": "npm run lint && npm run docs:check",
+    "start": "node dist/cli/index.js",
+    "dev": "tsx src/cli/index.ts",
+    "generate:manifests": "tsx scripts/generate-agent-manifests.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "tsx": "^4.19.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

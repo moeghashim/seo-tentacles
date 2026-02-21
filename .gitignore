@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.ses/
+.ssh/
+.Spotlight-V100/
+.SSF/
+.tmp/
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+coverage/
+.DS_Store
+# app state
+.seo/

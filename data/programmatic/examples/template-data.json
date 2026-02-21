@@ -1,0 +1,11 @@
+[
+  {
+    "id": "sample-1",
+    "topic": "SEO Strategy",
+    "query": "what is seo",
+    "intent": "informational",
+    "location": "global",
+    "attributes": { "source": "seed" },
+    "source_file": "data/programmatic/examples/template-data.json"
+  }
+]
