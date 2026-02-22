@@ -33,9 +33,14 @@ npm run dev -- audit --url https://example.com
 - `seo backlink import|list|pick`
 - `seo programmatic import|generate|validate|publish|status`
 
+## Sample outputs
+
+- `examples/cli-output/build.json`
+- `examples/cli-output/edit.json`
+- `examples/cli-output/programmatic-status.json`
+
 ## Docs
 See `docs/INDEX.md` for the doc map.
 
 ## Environment
 Set API keys and secrets through environment variables. Add none in code.
-

@@ -1,0 +1,20 @@
+{
+  "command": "seo programmatic status",
+  "status": "ok",
+  "run": {
+    "run_id": "run_2f7x9n4",
+    "template_name": "data/programmatic/examples/template-data.json",
+    "source_reference": "data/programmatic/examples/entities.csv",
+    "status": "passed",
+    "items_processed": 3,
+    "created_at": "2026-02-22T00:00:00.000Z",
+    "artifacts": [
+      "examples/programmatic/preview",
+      "template:data/programmatic/examples/template-data.json",
+      "issues:0",
+      "dryRun:false"
+    ]
+  },
+  "total_runs": 12,
+  "run_ids": ["run_2f7x9n4", "run_1a2b3c"]
+}

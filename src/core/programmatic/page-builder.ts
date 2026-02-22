@@ -4,9 +4,16 @@ import type { ProgrammaticEntity, ProgrammaticPageSpec } from './schema';
 import { slugify } from '../../utils/slug';
 import { renderTemplate } from './template-engine';
 
-export async function buildPages(entities: ProgrammaticEntity[], template: string, outputDir: string): Promise<ProgrammaticPageSpec[]> {
+export async function buildPages(
+  entities: ProgrammaticEntity[],
+  template: string,
+  outputDir: string,
+  options: { dryRun?: boolean } = {}
+): Promise<ProgrammaticPageSpec[]> {
   const out = path.resolve(process.cwd(), outputDir);
-  await fs.mkdir(out, { recursive: true });
+  if (!options.dryRun) {
+    await fs.mkdir(out, { recursive: true });
+  }
 
   const created: ProgrammaticPageSpec[] = [];
 
@@ -41,19 +48,21 @@ export async function buildPages(entities: ProgrammaticEntity[], template: strin
       breadcrumbs: [item.location || 'global', item.topic],
     };
 
-    const filePath = path.join(out, `${slug}.md`);
-    const content = [
-      `---`,
-      `title: ${JSON.stringify(spec.title)}`,
-      `description: ${JSON.stringify(spec.description)}`,
-      `slug: ${slug}`,
-      `canonical: ${spec.canonical}`,
-      `---`,
-      '',
-      spec.body,
-    ].join('\n');
+    if (!options.dryRun) {
+      const filePath = path.join(out, `${slug}.md`);
+      const content = [
+        `---`,
+        `title: ${JSON.stringify(spec.title)}`,
+        `description: ${JSON.stringify(spec.description)}`,
+        `slug: ${slug}`,
+        `canonical: ${spec.canonical}`,
+        `---`,
+        '',
+        spec.body,
+      ].join('\n');
 
-    await fs.writeFile(filePath, content, 'utf8');
+      await fs.writeFile(filePath, content, 'utf8');
+    }
     created.push(spec);
   }
 

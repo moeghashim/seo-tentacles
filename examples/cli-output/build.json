@@ -1,0 +1,18 @@
+{
+  "command": "seo build",
+  "status": "ok",
+  "artifacts": {
+    "run_id": "run_abcdefgh",
+    "source": "data/programmatic",
+    "target": "dist/site",
+    "env": "staging",
+    "files": [
+      {
+        "source": "data/programmatic/entities.csv",
+        "target": "dist/site/entities.csv",
+        "bytes": 248
+      }
+    ],
+    "completed_at": "2026-02-22T00:00:00.000Z"
+  }
+}

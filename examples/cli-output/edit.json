@@ -1,0 +1,13 @@
+{
+  "command": "seo edit",
+  "status": "warning",
+  "artifacts": {
+    "request_id": "review_12345",
+    "target": "docs/seo-audit-workflow.md",
+    "plan_file": "templates/keyword-brief-template.md",
+    "plan_lines": 12,
+    "target_exists": false,
+    "review_file": ".seo/edits/review_12345.json",
+    "created_at": "2026-02-22T00:00:00.000Z"
+  }
+}
