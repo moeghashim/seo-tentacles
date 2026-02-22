@@ -33,6 +33,14 @@ npm run dev -- audit --url https://example.com
 - `seo backlink import|list|pick`
 - `seo programmatic import|generate|validate|publish|status`
 
+## Maintenance
+
+After command contract updates, regenerate agent manifests:
+
+```bash
+npm run generate:manifests
+```
+
 ## Sample outputs
 
 - `examples/cli-output/build.json`

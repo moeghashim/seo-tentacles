@@ -13,6 +13,7 @@
 - `docs/technical-seo-spec.md` — SEO checks and quality gates
 - `docs/on-page-checklist.md` — publish-time checklist
 - `docs/api-contracts.md` — CLI API contracts (`AGENT` integration reference)
+- `docs/agent-specs/*` — generated multi-agent manifests from shared command contract
 - `docs/vercel-deployment.md` — Vercel integration and runbook
 - `docs/operations-runbook.md` — runbook and incident workflow
 - `docs/templates/*` — repeatable task templates
@@ -22,5 +23,6 @@
 
 Read when:
 - Any command behavior changes: read `docs/api-contracts.md`.
+- After command contract edits: run `npm run generate:manifests` and re-check `docs/agent-specs/*`.
 - Deployment failures: read `docs/vercel-deployment.md` + `docs/operations-runbook.md`.
 - New SEO workflow design: read `docs/technical-seo-spec.md`.
