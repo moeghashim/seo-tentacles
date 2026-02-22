@@ -2,6 +2,7 @@
 
 ## Docs and discovery
 Start: run docs list (`docs:list` script, or `bin/docs-list` here if present; ignore if not installed). Open docs before coding.
+Before every new task, read `learning.txt` first, then `docs:list`/`docs/INDEX.md`.
 Follow links until the domain makes sense; honor Read when hints.
 Keep notes short; update docs when behavior/API changes (no ship without docs).
 Add Read when hints on cross-cutting docs.
@@ -33,6 +34,7 @@ Check `~/.profile` for missing env keys (e.g. `SPARKLE_PRIVATE_KEY_FILE`); Spark
 
 ## Git
 Safe by default: `git status/diff/log`. Push only when user asks.
+After each task chunk, append one line to `progress.txt` only (never rewrite existing entries).
 `git checkout` ok for PR review / explicit request.
 Branch changes require user consent.
 Destructive ops forbidden unless explicit (`reset --hard`, `clean`, `restore`, `rm`, …).

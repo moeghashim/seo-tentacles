@@ -1,0 +1,21 @@
+# Project Learnings
+
+## 2026-02-22
+
+- CI failures were first caused by missing `package-lock.json`; `npm ci` in GitHub Actions requires an existing lockfile.
+- `npm ci` then passed, but `verify` failed due to `TS2688: Cannot find type definition file for 'node'`; resolved by adding `@types/node` to devDependencies.
+- Current CLI command contract and runtime architecture:
+  - Entry point: `src/cli/index.ts` parses args from `process.argv`, dispatches to command runners in `src/cli/commands/*`.
+  - Shared contract lives in `src/agents/contracts.ts`.
+  - Agent manifests are generated from the contract via `scripts/generate-agent-manifests.ts` into `docs/agent-specs/*`.
+- Verified manifest sync workflow:
+  - Changes to command contract should be followed by manifest updates (`manifest.codex.json`, `manifest.claude.md`, `manifest.openclaw.json`).
+- `npm run verify` includes `npm run lint` and `npm run docs:check`; docs checks require all required files listed in `scripts/docs-check.js`.
+- `scripts/docs-check.js` is an ESM script (`node:fs`, `node:path`) to align with `"type": "module"` package config.
+- GitHub verification checkpoints after fixes:
+  - `22269891391` transitioned from lockfile failure baseline to pass.
+- Tooling observations:
+  - `scripts/generate-agent-manifests.ts` using `tsx` can fail in some restricted environments with `EPERM` on `/var/folders/...` pipe creation; current workaround is to run locally in a writable environment where Node IPC is permitted.
+- Interactive CLI plan status:
+  - User requested full interactive wizard flow; no implementation has been applied yet.
+  - Existing command behavior remains non-interactive and deterministic for agent/automation compatibility.

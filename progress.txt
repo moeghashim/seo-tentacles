@@ -1,0 +1,1 @@
+2026-02-22  [Learning/Workflow] Implemented requested knowledge workflow: created learning.txt with project learnings, updated AGENTS.md to require reading learning.txt before new tasks, and documented append-only progress.txt discipline.
