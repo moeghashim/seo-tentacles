@@ -8,3 +8,4 @@
 - Implemented functional `build`, `edit`, `publish`, and `programmatic status` CLI flows.
 - Added basic SEO audit checks and scoring in engine.
 - Added run-level persistence for `programmatic generate` and status reporting.
+- Synced agent manifest artifacts (`manifest.codex.json`, `manifest.claude.md`, `manifest.openclaw.json`) to the full command contract.

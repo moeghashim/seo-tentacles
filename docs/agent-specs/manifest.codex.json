@@ -1,5 +1,264 @@
 {
   "name": "seo-tentacles",
-  "description": "SEO CLI skillset",
-  "runtime": "shell"
+  "description": "CLI-first SEO skillset with backlinks, audits, and programmatic SEO.",
+  "runtime": "shell",
+  "commands": [
+    {
+      "name": "seo audit",
+      "description": "Run a technical SEO audit for a URL.",
+      "args": [
+        {
+          "name": "--url",
+          "required": true,
+          "description": "Target URL to analyze"
+        }
+      ],
+      "examples": [
+        "seo audit --url https://example.com"
+      ]
+    },
+    {
+      "name": "seo build",
+      "description": "Copy source content to a target directory with build metadata.",
+      "args": [
+        {
+          "name": "--source",
+          "required": true,
+          "description": "Source directory to copy from."
+        },
+        {
+          "name": "--target",
+          "required": true,
+          "description": "Destination directory."
+        },
+        {
+          "name": "--env",
+          "required": false,
+          "description": "Build environment, e.g. staging or prod."
+        }
+      ],
+      "examples": [
+        "seo build --source src/site --target dist/site --env staging"
+      ]
+    },
+    {
+      "name": "seo edit",
+      "description": "Create a review artifact from a target and a plan file.",
+      "args": [
+        {
+          "name": "--target",
+          "required": true,
+          "description": "Target file path."
+        },
+        {
+          "name": "--plan",
+          "required": true,
+          "description": "Plan file path."
+        }
+      ],
+      "examples": [
+        "seo edit --target pages/service.md --plan /tmp/plan.json"
+      ]
+    },
+    {
+      "name": "seo plan",
+      "description": "Generate a simple technical SEO plan for a URL or topic.",
+      "args": [
+        {
+          "name": "--input",
+          "required": false,
+          "description": "Optional URL/topic string."
+        }
+      ],
+      "examples": [
+        "seo plan --input https://example.com"
+      ]
+    },
+    {
+      "name": "seo publish",
+      "description": "Run a project publish flow.",
+      "args": [
+        {
+          "name": "--project",
+          "required": true,
+          "description": "Project name."
+        },
+        {
+          "name": "--platform",
+          "required": false,
+          "description": "Target environment, for example preview or production."
+        }
+      ],
+      "examples": [
+        "seo publish --project seo-site --platform preview"
+      ]
+    },
+    {
+      "name": "seo health",
+      "description": "Check repo-level SEO project health.",
+      "args": [
+        {
+          "name": "--project",
+          "required": false,
+          "description": "Optional project name."
+        }
+      ],
+      "examples": [
+        "seo health --project seo-site"
+      ]
+    },
+    {
+      "name": "seo backlink import",
+      "description": "Import backlink opportunities from CSV or JSON.",
+      "args": [
+        {
+          "name": "--source",
+          "required": true,
+          "description": "Path to source file."
+        }
+      ],
+      "examples": [
+        "seo backlink import --source data/seed/backlinks/100-backlinks.csv"
+      ]
+    },
+    {
+      "name": "seo backlink list",
+      "description": "List backlink opportunities with optional filters.",
+      "args": [
+        {
+          "name": "--status",
+          "required": false,
+          "description": "Filter by status: not-started|in-progress|done|blocked"
+        },
+        {
+          "name": "--paid",
+          "required": false,
+          "description": "Filter by payment model: free|paid|all"
+        },
+        {
+          "name": "--category",
+          "required": false,
+          "description": "Filter by category label."
+        }
+      ],
+      "examples": [
+        "seo backlink list --status not-started --paid free"
+      ]
+    },
+    {
+      "name": "seo backlink pick",
+      "description": "Update backlink status by website/type match.",
+      "args": [
+        {
+          "name": "--website",
+          "required": true,
+          "description": "Website domain to match."
+        },
+        {
+          "name": "--type",
+          "required": true,
+          "description": "Backlink type to match."
+        },
+        {
+          "name": "--set-status",
+          "required": true,
+          "description": "Target status value."
+        }
+      ],
+      "examples": [
+        "seo backlink pick --website example.com --type guest-post --set-status in-progress"
+      ]
+    },
+    {
+      "name": "seo programmatic generate",
+      "description": "Generate programmatic landing pages from source data and template.",
+      "args": [
+        {
+          "name": "--source",
+          "required": true,
+          "description": "Source file path."
+        },
+        {
+          "name": "--template",
+          "required": true,
+          "description": "Template path."
+        },
+        {
+          "name": "--out",
+          "required": true,
+          "description": "Output folder."
+        },
+        {
+          "name": "--dry-run",
+          "required": false,
+          "description": "Run without writing output files."
+        }
+      ],
+      "examples": [
+        "seo programmatic generate --source data/programmatic/entities.csv --template templates/programmatic/page-template.hbs --out .seo/output"
+      ]
+    },
+    {
+      "name": "seo programmatic import",
+      "description": "Import entities for programmatic runs from CSV source.",
+      "args": [
+        {
+          "name": "--source",
+          "required": true,
+          "description": "CSV or JSON source path."
+        }
+      ],
+      "examples": [
+        "seo programmatic import --source data/programmatic/entities.csv"
+      ]
+    },
+    {
+      "name": "seo programmatic validate",
+      "description": "Validate programmatic output specs.",
+      "args": [
+        {
+          "name": "--source",
+          "required": true,
+          "description": "JSON file containing page specs."
+        }
+      ],
+      "examples": [
+        "seo programmatic validate --source .seo/programmatic-run.json"
+      ]
+    },
+    {
+      "name": "seo programmatic publish",
+      "description": "Deploy programmatic pages to preview or production.",
+      "args": [
+        {
+          "name": "--project",
+          "required": true,
+          "description": "Project name."
+        },
+        {
+          "name": "--scope",
+          "required": false,
+          "description": "Deployment scope: preview|production."
+        }
+      ],
+      "examples": [
+        "seo programmatic publish --project seo-site --scope preview"
+      ]
+    },
+    {
+      "name": "seo programmatic status",
+      "description": "Inspect latest or specific programmatic run status.",
+      "args": [
+        {
+          "name": "--run-id",
+          "required": false,
+          "description": "Optional run identifier from prior generate."
+        }
+      ],
+      "examples": [
+        "seo programmatic status",
+        "seo programmatic status --run-id run_abc123"
+      ]
+    }
+  ]
 }
