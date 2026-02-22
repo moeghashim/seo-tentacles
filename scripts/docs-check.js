@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 const required = [
   'docs/INDEX.md',
@@ -29,7 +29,7 @@ const required = [
 const missing = required.filter((file) => !fs.existsSync(path.resolve(process.cwd(), file)));
 
 if (missing.length) {
-  console.error('Missing docs:', missing.join('\n'));
+  console.error(`Missing docs:\n${missing.join('\n')}`);
   process.exitCode = 1;
 } else {
   console.log('Docs check passed');
